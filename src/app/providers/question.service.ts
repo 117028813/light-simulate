@@ -12,11 +12,11 @@ export class QuestionService {
     },
     {
       type: 'blink',
-      name: '夜间通过急弯、破路'
+      name: '夜间通过急弯、坡路'
     },
     {
       type: 'blink',
-      name: '夜间通过破路、拱桥'
+      name: '夜间通过坡路、拱桥'
     },
     {
       type: 'blink',
