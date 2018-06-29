@@ -1,0 +1,55 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.action {
+  margin-top: auto;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  text-align: center;
+  padding: 50px 0;
+  color: red;
+}
+
+.light {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+
+  mat-button-toggle-group {
+    width: 100%;
+    display: flex;
+    margin-bottom: 10px;
+
+    mat-button-toggle {
+      flex: 1;
+      text-align: center;
+    }
+  }
+}
+
+.light-type {
+  display: flex;
+  flex-direction: column;
+
+  mat-button-toggle {
+    display: flex;
+    flex-direction: column;
+  }
+
+  button {
+    margin-top: 10px;
+  }
+}
+
+.next {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
