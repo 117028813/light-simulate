@@ -5,7 +5,7 @@
 </h2>
 
 <div class="action">
-  <button mat-raised-button (click)="beginTest()" [disabled]="isBegin">开始考试</button>
+  <button mat-raised-button (click)="beginTest()" [disabled]="isBegin" color="accent">开始考试</button>
   
 </div>
 
@@ -27,5 +27,5 @@
 </div>
 
 <div class="next">
-  <button mat-raised-button (click)="nextQuestion()" [disabled]="isDisabled" color="primary">下一题</button>
+  <button mat-raised-button (click)="nextQuestion()" [disabled]="isDisabled" color="accent">下一题</button>
 </div>
