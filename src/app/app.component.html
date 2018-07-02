@@ -1,12 +1,10 @@
-
-
 <h2 class="message">
   {{currentQuestion?.name}}
 </h2>
 
 <div class="action">
   <button mat-raised-button (click)="beginTest()" [disabled]="isBegin" color="accent">开始考试</button>
-  
+
 </div>
 
 <div class="light">
@@ -27,5 +25,5 @@
 </div>
 
 <div class="next">
-  <button mat-raised-button (click)="nextQuestion()" [disabled]="isDisabled" color="accent">下一题</button>
+  <button mat-raised-button (click)="nextQuestion()" [disabled]="isDisabledNext" color="accent">下一题</button>
 </div>

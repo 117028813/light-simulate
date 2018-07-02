@@ -9,17 +9,16 @@ import { QuestionService } from "./providers/question.service";
 })
 export class AppComponent {
 
-  lightVal: number = 0
-  lightType: number = 1
-  dangerLightValue: boolean = false
-  question
-  currentQuestion
+  lightVal: number = 0 // 灯光状态：0：关，1：示廓灯，2：开
+  lightType: number = 1 // 灯光类型：0：远光，1：近光
+  dangerLightValue: boolean = false // 危险报警灯状态：true：开，false：关
+  question // 经过随机排序后的问题列表
+  currentQuestion // 点击开始按钮，点击下一题，点击交替远近光灯按钮后更新当前问题
   currentQuestionIndex: number = 0
-  // answer
-  isBegin: boolean = false
+  isBegin: boolean = false // 开始考试按钮状态
   blinkClicked: boolean = false
-  isDisabled: boolean = true
-  blinkDisable: boolean = true
+  isDisabledNext: boolean = true // 下一题按钮状态
+  blinkDisable: boolean = true // 交易远近光灯按钮状态
   blinkTimes: number = 0
 
   constructor(
@@ -44,6 +43,7 @@ export class AppComponent {
     this.blinkTimes++
     if (this.blinkTimes >= 2) {
       this.blinkClicked = true
+      this.blinkDisable = true
       setTimeout(() => {
         this.blinkDisable = false
       }, 500)
@@ -64,16 +64,16 @@ export class AppComponent {
 
   beginTest() {
     this.isBegin = true
-    this.isDisabled = false
+    this.isDisabledNext = false
     this.blinkDisable = false
     this.currentQuestion = this.question[0]
   }
 
   nextQuestion() {
 
-    this.isDisabled = true
+    this.isDisabledNext = true
     setTimeout(() => {
-      this.isDisabled = false
+      this.isDisabledNext = false
     }, 500)
 
     if (this.currentQuestion.type === 'open') {
@@ -90,12 +90,14 @@ export class AppComponent {
       }
     }
 
+    // 如果没点交替远近光灯按钮，而是点下一题，回答错误
+    // 如果点了交替远近光灯就直接跳到下一题了，不会执行这里
     if (this.currentQuestion.type === 'blink') {
       if (this.blinkClicked && this.lightType === 1) {
         // success
-        this.currentQuestionIndex++
-        this.currentQuestion = this.question[this.currentQuestionIndex]
-        return
+        // this.currentQuestionIndex++
+        // this.currentQuestion = this.question[this.currentQuestionIndex]
+        // return
       } else {
         // failed
         alert('回答错误')
